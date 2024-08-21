@@ -1,4 +1,4 @@
-db.sqlite3_create
+*.db.sqlite3_create
 Dockerfile
 .Dockerfile
 db.sqlite3
