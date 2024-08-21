@@ -1,5 +1,4 @@
 db.sqlite3_create
 Dockerfile
 .Dockerfile
-ecom - shortcut.link
-env
+db.sqlite3
