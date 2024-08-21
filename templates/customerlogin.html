@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<style>
+    .errorlist{
+        color: red;
+    }
+    .card-container {
+    max-width: 40% !important;
+    }
+</style>
+
+<div class="container">
+    <div class="card card-container">
+        <h3 class="text-center">Login</h3><hr>
+        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+        <p id="profile-name" class="profile-name-card"></p>
+        <form class="form-signin" method="POST">
+            {% csrf_token %}
+            <span id="reauth-email" class="reauth-email"></span>
+            <div class="form-group">
+                <input type="" id="inputEmail" class="form-control" name ="username" placeholder="username" required autofocus>
+            </div>
+            <div class="form-group">
+                <input type="password" id="inputPassword" class="form-control" name = "password"placeholder="password" required>
+            </div>
+            
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+        </form>
+        <div class="errorlist">
+            {{error}}
+        </div>
+        <!-- /form -->
+        {% comment %} <a href="#" class="forgot-password">
+            Forgot the password?
+        </a> {% endcomment %}
+        <a href="{% url 'ecomapp:customerregistration' %}{% if request.GET.next %}?next={{request.GET.next}}{% endif %}">Register here</a>
+    </div><!-- /card-container -->
+</div>
+ 
+{% endblock %}
+
+

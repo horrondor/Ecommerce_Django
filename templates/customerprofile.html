@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<style>
+.container-one{
+    background-color: #b6aecd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+   
+}
+.container-two td a{
+    background-color: #b6aecd;
+    color: black;
+    border-radius: 20px;
+    padding: 5px;
+}
+td {
+    padding-right: 10px;
+  }
+  
+td.spaced {
+    padding-right: 10px;
+  }
+
+td.label {
+    font-weight: bold;
+    color: black;
+    font-size: 15px;;
+  }
+   
+
+</style>
+
+<div class="container-one">
+    <div class="row">
+        <div class="col-md-8">
+                
+            <h3>Detail Information</h3><hr>
+            <table>
+                <tr>
+                    <td class="label">
+                        Name:
+                    </td>
+                    <td class="spaced">
+                        {{customer.full_name}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        Username:
+                    </td>
+                    <td class="spaced">
+                        {{customer.user.username}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        Email:
+                    </td>
+                    <td class="spaced">
+                        {{customer.user.email}}abcdef@gmail.com
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        Address:
+                    </td>
+                    <td class="spaced">
+                        {{customer.address}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        Joined on:
+                    </td>
+                    <td class="spaced">
+                        {{customer.joined_on.date}}
+                    </td>
+                </tr>
+                
+            </table>
+            
+        </div>
+        
+    </div>
+</div>
+<div class="container-two"
+    <div class="col-md-8">
+    <h3>Previous Orders</h3>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>SN</th>
+                <th>Order ID</th>
+                <th>Amount</th>
+                <th>Ordered on</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ord in orders %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td><a href="{% url 'ecomapp:customerorderdetail' ord.pk %}"> #ORDER_{{ord.id}}</a></td>
+                <td>{{ord.total}}</td>
+                <td>{{ord.created_at|timesince}} ago</td>
+                <td>{{ord.order_status}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Customer Registration{% endblock %}
+
+{% block content %}
+<style>
+    .errorlist{
+        color: red;
+    }
+    .card-container {
+    max-width: 40% !important;
+}
+
+</style>
+<div class="container">
+        
+    <div class="card card-container w-100">
+            <h3 class="text-center">Customer Registration Form</h3><hr>
+            <form action="" method="POST">
+                {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="username" placeholder="username" required autofocus>
+                        </div>
+                            
+                        <div class="form-group">
+                            <input type="password" id="inputPassword" class="form-control" name = "password" placeholder="Password" required>
+                        </div>
+                            
+                        <div class="form-group">
+                            <input type="email" id="inputEmail" class="form-control" name ="email" placeholder="email" required>
+
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="full_name" placeholder="full name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="address" placeholder="address" required>
+
+                        </div>
+
+                <button class="btn btn-lg btn-primary btn-block btn-signin">Register as a Customer</button>
+            </form>
+            <p> Already have an account? <a href="{% url 'ecomapp:customerlogin' %}">Login here</a></p>
+        </div>
+</div>
+{% endblock %}
